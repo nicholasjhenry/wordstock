@@ -33,6 +33,18 @@ module CustomRequestMatchers
     end
   end
 
+  RSpec::Matchers.define :contain_suggestions do |expected|
+    match do |actual|
+      suggestions = extract_suggestions_attr(actual)
+      suggestions == expected
+    end
+
+    failure_message_for_should do |actual|
+      suggestions = extract_suggestions_attr(actual)
+      "expected suggestions to be '#{expected}', got '#{suggestions}':\n #{actual}"
+    end
+  end
+
   def extract_original_attr(source)
     json = JSON.parse(source)
     JSONSelect('.original').match(json)
@@ -41,6 +53,11 @@ module CustomRequestMatchers
   def extract_correct_attr(source)
     json = JSON.parse(source)
     JSONSelect('.correct').match(json)
+  end
+
+  def extract_suggestions_attr(source)
+    json = JSON.parse(source)
+    JSONSelect('.suggestions').match(json)
   end
 end
 

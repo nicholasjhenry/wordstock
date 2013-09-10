@@ -23,4 +23,23 @@ describe "spell check" do
       expect(response.body).to correctly_spelled?
     end
   end
+
+  context "given an incorrectly spelled word" do
+    let(:incorrect_word) { 'scintillatingZ' }
+
+    it "returns a response the word is incorrect with suggestions" do
+      get '/spell', {q: incorrect_word}, headers
+
+      expect(response.status).to eq(200)
+      expect(response.body).to original_word_eq(incorrect_word)
+      expect(response.body).to_not correctly_spelled?
+      expect(response.body).to contain_suggestions(
+        ["scintillating",
+         "scintillation's",
+         "scintillation",
+         "scintillates",
+         "scintillate"]
+      )
+    end
+  end
 end
