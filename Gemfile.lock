@@ -28,6 +28,9 @@ GEM
     arel (4.0.0)
     atomic (1.1.13)
     builder (3.1.4)
+    dotenv (0.9.0)
+    dotenv-rails (0.9.0)
+      dotenv (= 0.9.0)
     erubis (2.7.0)
     hike (1.2.3)
     i18n (0.6.5)
@@ -81,5 +84,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv-rails
   rails (= 4.0.0)
   rails-api
