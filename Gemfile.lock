@@ -35,6 +35,8 @@ GEM
     erubis (2.7.0)
     hike (1.2.3)
     i18n (0.6.5)
+    json_select (0.1.4)
+      treetop
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -74,6 +76,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    spellchecker (0.1.5)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -97,6 +100,8 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv-rails
+  json_select
   rails (= 4.0.0)
   rails-api
   rspec-rails
+  spellchecker
