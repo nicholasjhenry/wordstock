@@ -8,17 +8,6 @@ class SpellCheckerController < ApplicationController
   private
 
   def spell_check(word)
-    if word == 'scintillating'
-      {original: 'scintillating', correct: true}
-    else
-      {
-        original: 'scintillatingZ', correct: false, suggestions:
-        ["scintillating",
-         "scintillation's",
-         "scintillation",
-         "scintillates",
-         "scintillate"]
-      }
-    end
+    Wordstock::SpellChecker.check(word)
   end
 end
