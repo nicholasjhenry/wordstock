@@ -7,19 +7,7 @@ module Wordstock
 
     def self.check(word)
       validate_word(word)
-
-      if word == 'scintillating'
-        {original: 'scintillating', correct: true}
-      else
-        {
-          original: 'scintillatingZ', correct: false, suggestions:
-          ["scintillating",
-           "scintillation's",
-           "scintillation",
-           "scintillates",
-           "scintillate"]
-        }
-      end
+      do_spell_check(word)
     end
 
     private
@@ -28,6 +16,10 @@ module Wordstock
       return if word.present?
 
       raise BadWord.new("Word cannot be null or blank")
+    end
+
+    def self.do_spell_check(word)
+      ::Spellchecker.check(word).first
     end
   end
 end
