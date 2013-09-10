@@ -1,6 +1,10 @@
 require 'spec_helper'
+require 'support/custom_request_matchers'
 
 describe "spell check" do
+
+  include CustomRequestMatchers
+
   let(:headers) do
     {
       'HTTP_ACCEPT' => 'application/json',
@@ -15,14 +19,8 @@ describe "spell check" do
       get '/spell', {q: correct_word}, headers
 
       expect(response.status).to eq(200)
-
-      json = JSON.parse(response.body)
-
-      match = JSONSelect('.original').match(json)
-      expect(match).to eq(correct_word)
-
-      match = JSONSelect('.correct').match(json)
-      expect(match).to be_true
+      expect(response.body).to original_word_eq(correct_word)
+      expect(response.body).to correctly_spelled?
     end
   end
 end
