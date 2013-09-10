@@ -1,5 +1,9 @@
 == Setup
 
+Install system dependencies:
+
+    brew install aspell
+
 Set up environment:
 
     cp .env.example .env
