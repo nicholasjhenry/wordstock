@@ -5,13 +5,15 @@ module Wordstock
 
     context "given a null word" do
       it "raises an exception" do
-        expect{ SpellChecker.check(nil) }.to raise_error(Wordstock::SpellChecker::BadWord)
+        expect{ SpellChecker.check(nil) }.to(
+          raise_error(Wordstock::SpellChecker::BadWord))
       end
     end
 
     context "given multiple words" do
       it "raises an exception" do
-        expect{ SpellChecker.check("spartan paradox") }.to raise_error(Wordstock::SpellChecker::BadWord)
+        expect{ SpellChecker.check("spartan paradox") }.to(
+          raise_error(Wordstock::SpellChecker::BadWord))
       end
     end
 
