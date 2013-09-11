@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sample RESTful service">
+    <meta name="author" content="Nicholas Henry">
+
+    <title>Wordstock API</title>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+
+      h2 { font-size: 20px }
+      h3 { font-size: 15px }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Wordstock</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h1>Wordstock API</h1>
+      <p class="lead"><strong>A spelling checking service</strong><br/>
+        This service accepts a word and returns a response indicating<br/>
+        whether the word is spelled correctly, with suggestions if it is mis-spelled.</p>
+
+      <h2>Documentation Summary</h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Resource</th>
+          <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><a href="#get-spell">GET spell</a></td>
+          <td>Returns a hash with the original word, a flag indicating if the word is spelled correctly, and an optional array of suggestions if the word is mis-spelled.</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <h2 id="get-spell">GET spell</h2>
+
+      <h3>Resource URL</h3>
+      <pre>http://wordstock.herokuapp.com/spell.json</pre>
+
+      <h3>Parameters</h3>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>q (required)</td>
+            <td>A single token representing a word. Exceptions are raised for null, blank or multiple words.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Example Request</h3>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>GET</td>
+            <td><pre>http://wordstock.herokuapp.com/spell.json?q=scintillatingZ</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <pre>{
+  "original": "scintillatingZ",
+  "correct": false,
+  "suggestions": [
+    "scintillating",
+    "scintillation's",
+    "scintillation",
+    "scintillates",
+    "scintillate"]
+}</pre>
+
+
+
+    </div><!-- /.container -->
+
+  <script src="codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
