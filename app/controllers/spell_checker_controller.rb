@@ -17,7 +17,9 @@ class SpellCheckerController < ApplicationController
   end
 
   def bad_word(error)
-    render json: format_messages(error.message), status: :bad_request
+    respond_to do |format|
+      format.json { render json: format_messages(error.message), status: :bad_request }
+    end
   end
 
   def format_messages(messages)
