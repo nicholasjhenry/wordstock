@@ -1,16 +1,13 @@
 class SpellCheckerController < ApplicationController
 
-  include ActionController::MimeResponds
+  rescue_from Wordstock::SpellChecker::BadWord, with: :bad_word
 
   def check
     result = spell_check(params[:q])
 
     respond_to do |format|
-      format.json { render json: result.to_json }
+      format.json { render json: result }
     end
-
-  rescue Wordstock::SpellChecker::BadWord => e
-    render json: format_messages(e.message), status: :bad_request
   end
 
   private
@@ -19,7 +16,13 @@ class SpellCheckerController < ApplicationController
     Wordstock::SpellChecker.check(word)
   end
 
-  def format_messages(messages)
-    {messages: Array(messages)}.to_json
+  def bad_word(error)
+    respond_to do |format|
+      format.json { render json: format_message(error.message), status: :bad_request }
+    end
+  end
+
+  def format_message(message)
+    {message: message}
   end
 end
