@@ -20,3 +20,19 @@ Hit the API:
 == How to run the test suite
 
 TBD
+
+== Deployment
+
+Wordstock is deployed on Heroku. If you would like to deploy the application yourself,
+update line 2 of config/heroku.yml with <your-app-name>.
+
+=== Setup
+
+    rake heroku:create
+    rake heroku:config
+    rake secret # generate secret token and copy
+    heroku config:add RAILS_SECRET_KEY_BASE=<paste secret token> -a <your-app-name>
+
+=== Deploy
+
+    rake production deploy

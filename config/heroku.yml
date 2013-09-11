@@ -1,0 +1,9 @@
+production:
+  app: wordstock
+  stack: cedar
+  config:
+    BUILDPACK_URL: "https://github.com/ddollar/heroku-buildpack-multi.git"
+    BUNDLE_WITHOUT: "development:test"
+    LD_LIBRARY_PATH: lib # required for Aspell
+    ASPELL_PATH: "aspell --dict-dir /app/lib/aspell-0.60/"
+    # RAILS_SECRET_KEY_BASE: this must be set manually
