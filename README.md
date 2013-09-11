@@ -1,3 +1,12 @@
+## About Wordstock
+
+Wordstock is spell checking service.
+
+This service accepts a word and returns a response indicating whether the word
+is spelled correctly, with suggestions if it is mis-spelled.
+
+You can access this service at: http://wordstock.herokuapp.com/
+
 ## Setup
 
 Install system dependencies:
