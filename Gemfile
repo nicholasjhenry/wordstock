@@ -4,9 +4,18 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0'
 
-gem 'dotenv-rails'
-gem 'json_select'
-gem 'passenger'
+group :development, :test do
+  gem 'dotenv-rails'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'json_select'
+end
+
+group :production do
+  gem 'passenger'
+end
+
 gem 'rails-api'
-gem 'rspec-rails'
 gem 'spellchecker'
