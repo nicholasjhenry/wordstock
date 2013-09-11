@@ -3,7 +3,9 @@ class SpellCheckerController < ApplicationController
   rescue_from Wordstock::SpellChecker::BadWord, with: :bad_word
 
   def check
-    result = spell_check(params[:q])
+    return unless stale?(word, public: true)
+
+    result = spell_check(word)
 
     respond_to do |format|
       format.json { render json: result }
@@ -12,8 +14,12 @@ class SpellCheckerController < ApplicationController
 
   private
 
-  def spell_check(word)
-    Wordstock::SpellChecker.check(word)
+  def word
+    params[:q]
+  end
+
+  def spell_check(new_word)
+    Wordstock::SpellChecker.check(new_word)
   end
 
   def bad_word(error)
