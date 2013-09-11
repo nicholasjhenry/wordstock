@@ -18,11 +18,11 @@ class SpellCheckerController < ApplicationController
 
   def bad_word(error)
     respond_to do |format|
-      format.json { render json: format_messages(error.message), status: :bad_request }
+      format.json { render json: format_message(error.message), status: :bad_request }
     end
   end
 
-  def format_messages(messages)
-    {messages: Array(messages)}
+  def format_message(message)
+    {message: message}
   end
 end

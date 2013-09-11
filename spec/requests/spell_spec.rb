@@ -44,11 +44,11 @@ describe "spell check" do
   end
 
   context "given a null word" do
-    it "returns a bad request with error messages" do
+    it "returns a bad request with error message" do
       get '/spell', {}, headers
 
       expect(response.status).to eq(400)
-      expect(response.body).to include_error_message("Word cannot be null or blank")
+      expect(response.body).to contain_error_message("Word cannot be null or blank")
     end
   end
 end

@@ -45,20 +45,18 @@ module CustomRequestMatchers
     end
   end
 
-  RSpec::Matchers.define :include_error_message do |expected|
+  RSpec::Matchers.define :contain_error_message do |expected|
     match do |actual|
-      messages = extract_error_messages(actual)
-      messages.include?(expected)
+      message = extract_error_message(actual)
+      message == expected
     end
 
     failure_message_for_should do |actual|
-      messages = extract_error_messages(actual)
-      "expected message: '#{expected}' to be present: #{messages}"
+      "expected message: '#{expected}' to be included: #{actual}"
     end
 
     failure_message_for_should_not do |actual|
-      messages = extract_error_messages(actual)
-      "expected message: '#{expected}' not to be present: #{messages}"
+      "expected message: '#{expected}' not to be included: #{actual}"
     end
   end
 
@@ -77,9 +75,9 @@ module CustomRequestMatchers
     JSONSelect('.suggestions').match(json)
   end
 
-  def extract_error_messages(source)
+  def extract_error_message(source)
     json = JSON.parse(source)
-    JSONSelect('.messages').match(json)
+    JSONSelect('.message').match(json)
   end
 end
 
