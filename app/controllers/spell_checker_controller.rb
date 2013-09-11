@@ -6,7 +6,7 @@ class SpellCheckerController < ApplicationController
     result = spell_check(params[:q])
 
     respond_to do |format|
-      format.json { render json: result.to_json }
+      format.json { render json: result }
     end
   end
 
@@ -23,6 +23,6 @@ class SpellCheckerController < ApplicationController
   end
 
   def format_messages(messages)
-    {messages: Array(messages)}.to_json
+    {messages: Array(messages)}
   end
 end
