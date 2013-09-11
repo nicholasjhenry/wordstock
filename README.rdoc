@@ -19,7 +19,7 @@ Hit the API:
 
 == How to run the test suite
 
-TBD
+   rspec spec
 
 == Deployment
 
