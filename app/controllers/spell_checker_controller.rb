@@ -1,7 +1,5 @@
 class SpellCheckerController < ApplicationController
 
-  include ActionController::MimeResponds
-
   def check
     result = spell_check(params[:q])
 
