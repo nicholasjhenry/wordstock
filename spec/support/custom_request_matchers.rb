@@ -1,5 +1,5 @@
 module CustomRequestMatchers
-  RSpec::Matchers.define :original_word_eq do |expected|
+  RSpec::Matchers.define :eq_original_word do |expected|
     match do |actual|
       word = extract_original_attr(actual)
       word == expected

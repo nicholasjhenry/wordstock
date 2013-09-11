@@ -19,7 +19,7 @@ describe "spell check" do
       get '/spell', {q: correct_word}, headers
 
       expect(response.status).to eq(200)
-      expect(response.body).to original_word_eq(correct_word)
+      expect(response.body).to eq_original_word(correct_word)
       expect(response.body).to correctly_spelled?
     end
   end
@@ -31,7 +31,7 @@ describe "spell check" do
       get '/spell', {q: incorrect_word}, headers
 
       expect(response.status).to eq(200)
-      expect(response.body).to original_word_eq(incorrect_word)
+      expect(response.body).to eq_original_word(incorrect_word)
       expect(response.body).to_not correctly_spelled?
       expect(response.body).to contain_suggestions(
         ["scintillating",
