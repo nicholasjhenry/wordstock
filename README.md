@@ -1,4 +1,4 @@
-== Setup
+## Setup
 
 Install system dependencies:
 
@@ -10,29 +10,31 @@ Set up environment:
 
 Start server:
 
-   rails s
+     rails s
 
 Hit the API:
 
-   http://localhost:3000/spell.json?q=scintillating
-   http://localhost:3000/spell.json?q=scintaillating
+     http://localhost:3000/spell.json?q=scintillating
+     http://localhost:3000/spell.json?q=scintillatingZ
 
-== How to run the test suite
+## Test Suite
 
-   rspec spec
+Run the test suite with:
 
-== Deployment
+     rspec spec
+
+## Deployment
 
 Wordstock is deployed on Heroku. If you would like to deploy the application yourself,
-update line 2 of config/heroku.yml with <your-app-name>.
+update line 2 of `config/heroku.yml` with `<your-app-name>`.
 
-=== Setup
+### Setup
 
     rake heroku:create
     rake heroku:config
     rake secret # generate secret token and copy
     heroku config:add RAILS_SECRET_KEY_BASE=<paste secret token> -a <your-app-name>
 
-=== Deploy
+### Deploy
 
     rake production deploy
