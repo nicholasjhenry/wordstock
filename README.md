@@ -13,8 +13,12 @@ Install system dependencies:
 
     brew install aspell
 
-Set up environment:
+Setup the application:
 
+    git clone git@github.com:nicholasjhenry/wordstock.git
+    cd wordstock
+    # note target Ruby version is 2.0, but should run on 1.9.3
+    bundle
     cp .env.example .env
 
 Start server:
