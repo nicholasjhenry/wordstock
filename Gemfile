@@ -23,4 +23,4 @@ group :production do
 end
 
 gem 'rails-api'
-gem 'spellchecker'
+gem 'spellchecker', github: 'nicholasjhenry/spellchecker'
